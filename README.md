@@ -10,7 +10,7 @@ Cette bibliothèque est très largement inspirée (aussi bien sur le principe qu
 $  pip install divia-api
 ```
 
-* Manuellement, dans un dossier où vous avez décompressé [la dernière version](https://github.com/filau/python_divia_api) du module&nbsp;:
+* Manuellement, dans un dossier où vous avez décompressé [la dernière version](https://github.com/filau/python_divia_api/releases/latest) du module&nbsp;:
 ```
 $  python setup.py install
 ```
