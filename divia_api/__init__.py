@@ -1,4 +1,6 @@
 """
+__init__.py
+
 divia_api is a Python library that allows to retrieve the timetable
 of Divia’s bus and tramways straight from a Python script.
 Copyright (C) 2021  Firmin Launay

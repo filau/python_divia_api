@@ -1,0 +1,31 @@
+# « API » Divia — Python
+
+Ce module servant  d’« API » vous permet d’accéder aux horaires des prochains bus et tram du réseau dijonnais *Divia*, en temps réel, grâce au service *TOTEM*, et ce directement depuis un script Python!  
+Cette bibliothèque est très largement inspirée (aussi bien sur le principe que dans la logique et les techniques utilisée) de [**divia-api** par **@gauthier-th**](https://github.com/gauthier-th/divia-api) (en JavaScript).
+
+## Exemple d’utilisation
+
+```python
+from divia_api import DiviaAPI
+
+api = DiviaAPI()
+
+line = api.find_line("T2", 'R')  # Récupération de la ligne 2 du tram, dans la direction « R » (« A » étant la valeur par défaut).
+line = api.get_line("185")  # Récupération de la ligne par son identifiant unique (ici le 185, qui correspond à la ligne 2 du tram, dans la direction « R ».
+
+stop = line.find_stop("Darcy")  # Récupération de l’arrêt « Darcy » pour cette ligne.
+stop = line.find_stop("1494")  # Récupération de l’arrêt « Darcy » pour cette ligne, à partir de son identifiant unique.
+
+stop = api.find_stop("T2", "Darcy", 'R')  # Les étapes précédentes (récupération de la ligne et de l’arrêt) peuvent également être combinées.
+
+totem_result = stop.totem()  # Interrogation du service TOTEM et récupération des prochains horaires. C’est une liste d’objets « datetime.datetime » qui est retournée par la fonction.
+
+print(totem_result)  # Affichage du résultat.
+```
+
+## __________
+
+*Divia* est une marque déposée de *Keolis Dijon*. Nous ne sommes en aucun cas affilié à *Keolis* ou à ses filiales et succursales.  
+  
+Cette bibliothèque est ditribuée sous la [License publique générale GNU amoindrie, version 3](https://www.gnu.org/licenses/lgpl-3.0.fr.html).  
+© 2021, Firmin Launay ([hey@firminlaunay.me](mailto:hey@firminlaunay.me))
