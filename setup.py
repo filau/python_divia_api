@@ -22,6 +22,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 from distutils.core import setup
+from os import path
+
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     name='divia_api',
@@ -29,6 +34,8 @@ setup(
     version='1.0.0',
     license='LGPL-3.0',
     description='divia_api is a Python library that allows to retrieve the timetable of Divia’s bus and tramways straight from a Python script.',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     author='Firmin Launay',
     author_email='hey@firminlaunay.me',
     url='https://github.com/filau/python_divia_api',
