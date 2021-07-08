@@ -1,10 +1,12 @@
 # «&nbsp;API&nbsp;» Divia&nbsp;—&nbsp;Python
 
 Ce module servant  d’«&nbsp;API&nbsp;» vous permet d’accéder aux horaires des prochains bus et tram du réseau dijonnais *Divia*, en temps réel, grâce au service *TOTEM*, et ce directement depuis un script Python&nbsp;!  
-Cette bibliothèque est très largement inspirée (aussi bien sur le principe que dans la logique et les techniques utilisée) de [**divia-api** par **@gauthier-th**](https://github.com/gauthier-th/divia-api) (en JavaScript).
+Cette bibliothèque est très largement inspirée (aussi bien sur le principe que dans la logique et les techniques utilisées) de [**divia-api** par **@gauthier-th**](https://github.com/gauthier-th/divia-api) (en JavaScript).
 
 ## Installation
 
+Cette bibliothèque est disponible pour Python 3.6 et versions postérieures.  
+  
 * Depuis [PyPI](https://pypi.org), avec [pip](https://pypi.org/project/pip/)&nbsp;:
 ```
 $  pip install divia-api
