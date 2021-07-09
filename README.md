@@ -39,7 +39,7 @@ print(totem_result)  # Affichage du résultat.
 
 ## __________
 
-*Divia* est une marque déposée de *Keolis Dijon*. Nous ne sommes en aucun cas affilié à *Keolis* ou à ses filiales et succursales.  
+*Divia* est une marque déposée de *Keolis Dijon*. Nous ne sommes en aucun cas affiliés à *Keolis* ou à ses filiales et succursales.  
   
 Cette bibliothèque est ditribuée sous la [License publique générale GNU amoindrie, version 3](https://www.gnu.org/licenses/lgpl-3.0.fr.html).  
 © 2021, Firmin Launay ([hey@firminlaunay.me](mailto:hey@firminlaunay.me))
