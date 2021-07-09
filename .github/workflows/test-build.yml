@@ -1,3 +1,9 @@
+name: Build and install package
+
+on:
+  push:
+    branches: [ bt ]
+
 jobs:
   build-package:
     runs-on: ubuntu-latest
