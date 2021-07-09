@@ -2,7 +2,7 @@ name: Build and install package
 
 on:
   push:
-    branches: [ bt ]
+    branches: [ main ]
 
 jobs:
   build-package:
@@ -13,4 +13,3 @@ jobs:
       uses: CasperWA/check-sdist-action@v1
       with:
         repository: filau/python_divia_api
-        branch: bt
