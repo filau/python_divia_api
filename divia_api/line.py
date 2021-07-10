@@ -42,3 +42,8 @@ class Line:
         corresponding_stops = list(item for item in self.line_data["arrets"].values() if item["nom"] == stop_name)
         if len(corresponding_stops) > 0:
             return Stop(self.api_data, self, corresponding_stops[0])
+        corresponding_stops = list(item for item in self.line_data["arrets"].values()
+                                   if item["nom"].replace(" " + self.line_data["codetotem"], "").lower() ==
+                                   stop_name.lower().replace(" " + self.line_data["codetotem"].lower(), ""))
+        if len(corresponding_stops) > 0:
+            return Stop(self.api_data, self, corresponding_stops[0])

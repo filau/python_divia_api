@@ -47,10 +47,11 @@ class DiviaAPI:
 
     def find_line(self, name: str, way: str = 'A') -> Line:
         """Find a line by specifying its name and its way."""
+        way = way.upper()
         if way not in valid_ways:
             raise InvalidWay
         corresponding_lines = list(item for item in self.network["arborescence"]["lignes"].values()
-                                   if (item["codetotem"] == name) and (item["senstotem"] == way))
+                                   if (item["codetotem"].lower() == name.lower()) and (item["senstotem"] == way))
         if len(corresponding_lines) > 0:
             return Line(self, corresponding_lines[0])
 
