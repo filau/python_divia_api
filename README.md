@@ -28,7 +28,7 @@ line = api.find_line("T2", 'R')  # Récupération de la ligne 2 du tram, dans la
 line = api.get_line("185")  # Récupération de la ligne par son identifiant unique (ici le 185, qui correspond à la ligne 2 du tram, dans la direction « R ».
 
 stop = line.find_stop("Darcy")  # Récupération de l’arrêt « Darcy » pour cette ligne.
-stop = line.find_stop("1494")  # Récupération de l’arrêt « Darcy » pour cette ligne, à partir de son identifiant unique.
+stop = line.get_stop("1494")  # Récupération de l’arrêt « Darcy » pour cette ligne, à partir de son identifiant unique.
 
 stop = api.find_stop("T2", "Darcy", 'R')  # Les étapes précédentes (récupération de la ligne et de l’arrêt) peuvent également être combinées.
 
