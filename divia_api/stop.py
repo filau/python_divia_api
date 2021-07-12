@@ -58,7 +58,7 @@ class Stop:
             else:
                 result.append(time_1_today)
             if two:
-                time_2 = html_totem.split("<span class=\"uk-badge\"> ")[2].split("</span>")[0]
+                time_2 = html_totem.split("<span class=\"uk-badge\"> ")[2].split("</span>")[0].split(":")
                 time_2_today = datetime(now.year, now.month, now.day, int(time_2[0]), int(time_2[1]), 0)
                 if (now - two_minutes) > time_2_today:
                     result.append(time_2_today + one_day)
