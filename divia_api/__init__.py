@@ -25,6 +25,6 @@ __title__ = 'divia_api'
 __author__ = 'Firmin Launay'
 __license__ = 'LGPL-3.0'
 __copyright__ = 'divia_api  Copyright (C) 2021  Firmin Launay'
-__version__ = '1.2'
+__version__ = '1.3'
 
 from .api import DiviaAPI
