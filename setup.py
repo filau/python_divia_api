@@ -42,8 +42,7 @@ setup(
     download_url='https://github.com/filau/python_divia_api/archive/refs/tags/1.3.tar.gz',
     keywords=['divia', 'api', 'firmin', 'launay', 'dijon', 'bus', 'tram'],
     install_requires=[
-        'requests',
-        'unidecode'
+        'requests'
     ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',

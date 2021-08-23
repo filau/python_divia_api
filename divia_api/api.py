@@ -28,7 +28,7 @@ from .stop import Stop
 from .exceptions import InvalidWay
 
 
-valid_ways = ['A', 'R']
+VALID_WAYS = ['A', 'R']
 
 
 class DiviaAPI:
@@ -48,7 +48,7 @@ class DiviaAPI:
     def find_line(self, name: str, way: str = 'A') -> Line:
         """Find a line by specifying its name and its way."""
         way = way.upper()
-        if way not in valid_ways:
+        if way not in VALID_WAYS:
             raise InvalidWay
         corresponding_lines = list(item for item in self.network["arborescence"]["lignes"].values()
                                    if (item["codetotem"].lower() == name.lower()) and (item["senstotem"] == way))

@@ -22,7 +22,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 from .stop import Stop
-from unidecode import unidecode
+from .normalize_characters import normalize
 
 
 class Line:
@@ -44,7 +44,7 @@ class Line:
         if len(corresponding_stops) > 0:
             return Stop(self.api_data, self, corresponding_stops[0])
         corresponding_stops = list(item for item in self.line_data["arrets"].values()
-                                   if unidecode(item["nom"].replace(" " + self.line_data["codetotem"], "").lower()) ==
-                                   unidecode(stop_name.lower().replace(" " + self.line_data["codetotem"].lower(), "")))
+                                   if normalize(item["nom"].replace(" " + self.line_data["codetotem"], "").lower()) ==
+                                   normalize(stop_name.lower().replace(" " + self.line_data["codetotem"].lower(), "")))
         if len(corresponding_stops) > 0:
             return Stop(self.api_data, self, corresponding_stops[0])
