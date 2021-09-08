@@ -31,15 +31,15 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
     name='divia_api',
     packages=['divia_api'],
-    version='1.4',
+    version='2.0',
     license='LGPL-3.0',
-    description='divia_api is a Python library that allows to retrieve the timetable of Divia’s bus and tramways straight from a Python script.',
+    description='divia_api is a Python library that allows to retrieve the timetable of Divia’s bus and tramways, along with some infos about DiviaVélodi bikes, straight from a Python script.',
     long_description=long_description,
     long_description_content_type='text/markdown',
     author='Firmin Launay',
     author_email='hey@firminlaunay.me',
     url='https://github.com/filau/python_divia_api',
-    download_url='https://github.com/filau/python_divia_api/archive/refs/tags/1.4.tar.gz',
+    download_url='https://github.com/filau/python_divia_api/archive/refs/tags/2.0.tar.gz',
     keywords=['divia', 'api', 'firmin', 'launay', 'dijon', 'bus', 'tram'],
     install_requires=[
         'requests'

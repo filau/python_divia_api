@@ -23,6 +23,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from requests import get
 from json import loads
+from .velodi import Velodi
 from .line import Line
 from .stop import Stop
 from .exceptions import InvalidWay
@@ -37,6 +38,7 @@ class DiviaAPI:
         self.network = loads(raw_network)
         self.lines = self.network["lignes"].values()
         self.stops = self.network["arrets"].values()
+        self.velodi = Velodi()
 
     def get_line(self, line_id: str) -> Line:
         """Find a line by specifying its unique identifier."""
