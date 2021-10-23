@@ -86,5 +86,29 @@ class Velodi:
 
     def get_station(self, station_code: str) -> VelodiStation:
         corresponding_stations = list(item for item in self.stations if item.code == station_code)
-        if len(corresponding_stations > 0):
+        if len(corresponding_stations) > 0:
             return corresponding_stations[0]
+
+    def find_stations(self, station_names: list) -> list:
+        stations = []
+        for station_name in station_names:
+            stations.append(self.find_station(station_name))
+        return stations
+
+    def get_stations(self, station_codes: list) -> list:
+        stations = []
+        for station_code in station_codes:
+            stations.append(self.get_station(station_code))
+        return stations
+
+    def check_multiple_stations(self, stations: list) -> list:
+        velodi_data = update_source()
+        results = []
+        for station in stations:
+            query_result = list(item for item in velodi_data if (item["infos"]["code_cykleo"] == station.code))
+            try:
+                free = query_result[0]["infos"]["qucit"]["realtime"]
+                results.append(FreeVelodi(free["bikes"], free["docks"]))
+            except IndexError:
+                raise Exception("Data not found.")
+        return results
