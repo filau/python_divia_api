@@ -35,7 +35,8 @@ def update_source() -> list:
 
 
 class FreeVelodi:
-    def __init__(self, bikes: int, docks: int):
+    def __init__(self, station, bikes: int, docks: int):
+        self.station = station
         self.bikes = bikes
         self.docks = docks
 
@@ -54,7 +55,7 @@ class VelodiStation:
         query_result = list(item for item in velodi_data if (item["infos"]["code_cykleo"] == self.code))
         try:
             free = query_result[0]["infos"]["qucit"]["realtime"]
-            return FreeVelodi(free["bikes"], free["docks"])
+            return FreeVelodi(self, free["bikes"], free["docks"])
         except IndexError:
             raise Exception("Data not found.")
 
@@ -108,7 +109,7 @@ class Velodi:
             query_result = list(item for item in velodi_data if (item["infos"]["code_cykleo"] == station.code))
             try:
                 free = query_result[0]["infos"]["qucit"]["realtime"]
-                results.append(FreeVelodi(free["bikes"], free["docks"]))
+                results.append(FreeVelodi(station, free["bikes"], free["docks"]))
             except IndexError:
                 raise Exception("Data not found.")
         return results

@@ -55,6 +55,11 @@ station = velodi_api.get_station("34")  # Récupération d’une station par son
 realtime = station.check()  # Requête de données à jour sur la disponibilité des vélos et des emplacements dans cette station.
 
 print(realtime.bikes, "  ", realtime.docks)  # Affichage du résultat (nombre de vélos disponibles et nombre de places disponibles sur la station).
+
+realtime_all_stations = velodi_api.check_multiple_stations(velodi_api.stations)  # Requête de données à jour sur l’intégralité des stations du réseau.
+
+for station in realtime_all_stations:
+    print(f"Station {station.station.code} : {station}")  # Affichage, pour chaque station du réseau, du numéro de la station et du résultat.
 ```
 
 ## __________
