@@ -50,12 +50,25 @@ class VelodiStation:
         self.raw_name = raw_name
         self.friendly_name = friendly_name
 
-    def check(self):
+    def check_cached(self):  # Checking method used in previous versions, that is signficantly faster but did not really provide realtime results because of caching issues.
+        """This may not be realtime data !!!!"""
         velodi_data = update_source()
         query_result = list(item for item in velodi_data if (item["infos"]["code_cykleo"] == self.code))
         try:
             free = query_result[0]["infos"]["qucit"]["realtime"]
             return FreeVelodi(self, free["bikes"], free["docks"])
+        except IndexError:
+            raise Exception("Data not found.")
+
+    def check(self):
+        velodi_data = update_source()
+        query_result = list(item for item in velodi_data if (item["infos"]["code_cykleo"] == self.code))
+        try:
+            response = get("https://www.divia.fr" + query_result[0]["url"]).content.decode("utf-8")
+            response = response.split("<span class=\"uk-indicateur-value\">")
+            free_bikes = int(response[1].split("</span>")[0])
+            free_docks = int(response[2].split("</span>")[0])
+            return FreeVelodi(self, free_bikes, free_docks)
         except IndexError:
             raise Exception("Data not found.")
 
