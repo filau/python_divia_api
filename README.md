@@ -44,9 +44,9 @@ print(totem_result)  # Affichage du résultat.
 ## Exemple de l’utilisation de l’API Vélodi
 
 ```python
-from divia_api import DiviaAPI
+from divia_api import VelodiAPI
 
-velodi_api = DiviaAPI().velodi
+velodi_api = VelodiAPI()
 
 station = velodi_api.find_station("Lycée Carnot")  # Récupération de la station DiviaVélodi « Lycée Carnot ».
 

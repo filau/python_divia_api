@@ -1,3 +1,4 @@
+
 # coding=utf-8
 
 """
@@ -5,7 +6,7 @@ api.py
 
 divia_api is a Python library that allows to retrieve the timetable
 of Divia’s bus and tramways straight from a Python script.
-Copyright (C) 2021  Firmin Launay
+Copyright (C) 2023  Firmin Launay
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,7 +24,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from requests import get
 from json import loads
-from .velodi import Velodi
+from .velodi import VelodiAPI
 from .line import Line
 from .stop import Stop
 from .exceptions import InvalidWay
@@ -38,7 +39,7 @@ class DiviaAPI:
         self.network = loads(raw_network)
         self.lines = self.network["lignes"].values()
         self.stops = self.network["arrets"].values()
-        self.velodi = Velodi()
+        self.velodi = VelodiAPI()  # Deprecated, directly import and initialize VelodiAPI instead.
 
     def get_line(self, line_id: str) -> Line:
         """Find a line by specifying its unique identifier."""

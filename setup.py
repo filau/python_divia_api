@@ -5,7 +5,7 @@ setup.py
 
 divia_api is a Python library that allows to retrieve the timetable
 of Divia’s bus and tramways straight from a Python script.
-Copyright (C) 2021  Firmin Launay
+Copyright (C) 2023  Firmin Launay
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
     name='divia_api',
     packages=['divia_api'],
-    version='2.3',
+    version='2.4',
     license='LGPL-3.0',
     description='divia_api is a Python library that allows to retrieve the timetable of Divia’s bus and tramways, along with some infos about DiviaVélodi bikes, straight from a Python script.',
     long_description=long_description,
@@ -39,8 +39,8 @@ setup(
     author='Firmin Launay',
     author_email='hey@firminlaunay.me',
     url='https://github.com/filau/python_divia_api',
-    download_url='https://github.com/filau/python_divia_api/archive/refs/tags/2.3.tar.gz',
-    keywords=['divia', 'api', 'firmin', 'launay', 'dijon', 'bus', 'tram'],
+    download_url='https://github.com/filau/python_divia_api/archive/refs/tags/2.4.tar.gz',
+    keywords=['divia', 'api', 'firmin', 'launay', 'dijon', 'bus', 'tram', 'velodi'],
     install_requires=[
         'requests'
     ],
@@ -52,6 +52,8 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9'
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11'
     ]
 )
