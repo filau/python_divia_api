@@ -5,7 +5,7 @@ velodi.py
 
 divia_api is a Python library that allows to retrieve the timetable
 of Divia’s bus and tramways straight from a Python script.
-Copyright (C) 2023  Firmin Launay
+Copyright (C) 2024  Firmin Launay
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,10 +21,10 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
+from __future__ import annotations  # TODO: Import orders must follow PEP8
 from requests import get
 from json import loads
 from .normalize_characters import normalize
-# from normalize_characters import normalize
 
 
 def update_source() -> list:
@@ -35,32 +35,33 @@ def update_source() -> list:
 
 
 class FreeVelodi:
-    def __init__(self, station, bikes: int, docks: int):
+    def __init__(self, station: VelodiStation, bikes: int, docks: int) -> None:
         self.station = station
         self.bikes = bikes
         self.docks = docks
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.bikes} free bikes & {self.docks} free docks."
 
 
 class VelodiStation:
-    def __init__(self, code: str, raw_name: str, friendly_name: str):
+    def __init__(self, code: str, raw_name: str, friendly_name: str) -> None:
         self.code = code
         self.raw_name = raw_name
         self.friendly_name = friendly_name
 
-    def check_cached(self):  # Checking method used in previous versions, that is signficantly faster but did not really provide realtime results because of caching issues.
-        """This may not be realtime data !!!!"""
+    def check_cached(self) -> FreeVelodi:  # This may not be realtime data!!!
+        """Checking method used in previous versions, that is significantly faster but did not really provide realtime
+        results because of caching issues."""
         velodi_data = update_source()
         query_result = list(item for item in velodi_data if (item["infos"]["code_cykleo"] == self.code))
         try:
             free = query_result[0]["infos"]["qucit"]["realtime"]
             return FreeVelodi(self, free["bikes"], free["docks"])
         except IndexError:
-            raise Exception("Data not found.")
+            raise Exception("Data not found.")  # TODO: Replace by custom exception
 
-    def check(self):
+    def check(self) -> FreeVelodi:
         velodi_data = update_source()
         query_result = list(item for item in velodi_data if (item["infos"]["code_cykleo"] == self.code))
         try:
@@ -70,11 +71,11 @@ class VelodiStation:
             free_docks = int(response[2].split("</span>")[0])
             return FreeVelodi(self, free_bikes, free_docks)
         except IndexError:
-            raise Exception("Data not found.")
+            raise Exception("Data not found.")  # TODO: Replace by custom exception
 
 
 class VelodiAPI:
-    def __init__(self):
+    def __init__(self) -> None:
         self.data = update_source()
         self.stations = []
 
@@ -103,23 +104,25 @@ class VelodiAPI:
         if len(corresponding_stations) > 0:
             return corresponding_stations[0]
 
-    def find_stations(self, station_names: list) -> list:
+    def find_stations(self, station_names: list[str]) -> list[VelodiStation]:
         stations = []
         for station_name in station_names:
             stations.append(self.find_station(station_name))
         return stations
 
-    def get_stations(self, station_codes: list) -> list:
+    def get_stations(self, station_codes: list[str]) -> list[VelodiStation]:
         stations = []
         for station_code in station_codes:
             stations.append(self.get_station(station_code))
         return stations
 
-    def check_multiple_stations(self, stations: list) -> list:
-        velodi_data = update_source()
+    def check_multiple_stations(
+            self, stations: list[VelodiStation]
+    ) -> list[FreeVelodi]:  # This may not be relatime data!!!
+        self.data = update_source()
         results = []
         for station in stations:
-            query_result = list(item for item in velodi_data if (item["infos"]["code_cykleo"] == station.code))
+            query_result = list(item for item in self.data if (item["infos"]["code_cykleo"] == station.code))
             try:
                 free = query_result[0]["infos"]["qucit"]["realtime"]
                 results.append(FreeVelodi(station, free["bikes"], free["docks"]))

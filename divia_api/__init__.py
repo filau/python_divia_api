@@ -5,7 +5,7 @@ __init__.py
 
 divia_api is a Python library that allows to retrieve the timetable
 of Divia’s bus and tramways straight from a Python script.
-Copyright (C) 2023  Firmin Launay
+Copyright (C) 2024  Firmin Launay
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 __title__ = 'divia_api'
 __author__ = 'Firmin Launay'
 __license__ = 'LGPL-3.0'
-__copyright__ = 'divia_api  Copyright (C) 2023  Firmin Launay'
+__copyright__ = 'divia_api  Copyright (C) 2024  Firmin Launay'
 __version__ = '2.4'
 
 from .api import DiviaAPI

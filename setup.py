@@ -5,7 +5,7 @@ setup.py
 
 divia_api is a Python library that allows to retrieve the timetable
 of Divia’s bus and tramways straight from a Python script.
-Copyright (C) 2023  Firmin Launay
+Copyright (C) 2024  Firmin Launay
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-from setuptools import setup, Extension
+from setuptools import setup, Extension  # TODO: Import orders must follow PEP8
 from os import path
 
 this_directory = path.abspath(path.dirname(__file__))
@@ -49,7 +49,6 @@ setup(
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
         'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',

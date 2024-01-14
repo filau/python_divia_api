@@ -5,7 +5,7 @@ line.py
 
 divia_api is a Python library that allows to retrieve the timetable
 of Divia’s bus and tramways straight from a Python script.
-Copyright (C) 2023  Firmin Launay
+Copyright (C) 2024  Firmin Launay
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ from .normalize_characters import normalize
 
 
 class Line:
-    def __init__(self, api_data, line_data):
+    def __init__(self, api_data, line_data) -> None:
         self.api_data = api_data
         self.line_data = line_data
         self.stops = self.line_data["arrets"]

@@ -5,7 +5,7 @@ stop.py
 
 divia_api is a Python library that allows to retrieve the timetable
 of Divia’s bus and tramways straight from a Python script.
-Copyright (C) 2023  Firmin Launay
+Copyright (C) 2024  Firmin Launay
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,8 +21,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-from requests import post
+from requests import post  # TODO: Import orders must follow PEP8
 from datetime import datetime, timedelta
+from .line import Line  # TODO: Check that importing this here does not lead to any circular import issue
 
 
 two_minutes = timedelta(minutes=2)
@@ -30,7 +31,7 @@ one_day = timedelta(days=1)
 
 
 class Stop:
-    def __init__(self, api_data, line, stop_data):
+    def __init__(self, api_data: dict, line: Line, stop_data: dict) -> None:
         self.api_data = api_data
         self.line = line
         self.stop_data = stop_data
