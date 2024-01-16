@@ -21,9 +21,10 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-from requests import post  # TODO: Import orders must follow PEP8
+from __future__ import annotations
 from datetime import datetime, timedelta
-from .line import Line  # TODO: Check that importing this here does not lead to any circular import issue
+
+from requests import post
 
 
 two_minutes = timedelta(minutes=2)

@@ -59,7 +59,7 @@ print(realtime.bikes, "  ", realtime.docks)  # Affichage du résultat (nombre de
 realtime_all_stations = velodi_api.check_multiple_stations(velodi_api.stations)  # Requête de données à jour sur l’intégralité des stations du réseau.
 
 for station in realtime_all_stations:
-    print(f"Station {station.station.code} : {station}")  # Affichage, pour chaque station du réseau, du numéro de la station et du résultat.
+    print(f"Station {station.station.code} ({station.station.friendly_name}) : {station}")  # Affichage, pour chaque station du réseau, du numéro de la station et du résultat.
 ```
 
 ## __________

@@ -24,7 +24,22 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from sys import exit
 
 
+# TODO: Improve exceptions implementation, there is a better way.
+
+
 class InvalidWay(Exception):
     def __init__(self) -> None:
         print("Exception: The way can only be “A” or “R”. Exiting.")
         exit(1)
+
+
+class LineNotFound(Exception):
+    def __init__(self) -> None:
+        print("Exception: The line you specified cannot be found. Exiting.")
+        exit(1)
+
+
+class DataNotFound(Exception):
+    def __init__(self) -> None:
+        print("Exception: The data could not be pulled from the web. Exiting.")
+        exit(2)

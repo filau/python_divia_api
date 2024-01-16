@@ -21,10 +21,13 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-from __future__ import annotations  # TODO: Import orders must follow PEP8
-from requests import get
+from __future__ import annotations
 from json import loads
+
+from requests import get
+
 from .normalize_characters import normalize
+from .exceptions import DataNotFound
 
 
 def update_source() -> list:
@@ -59,7 +62,7 @@ class VelodiStation:
             free = query_result[0]["infos"]["qucit"]["realtime"]
             return FreeVelodi(self, free["bikes"], free["docks"])
         except IndexError:
-            raise Exception("Data not found.")  # TODO: Replace by custom exception
+            raise DataNotFound
 
     def check(self) -> FreeVelodi:
         velodi_data = update_source()
@@ -71,7 +74,7 @@ class VelodiStation:
             free_docks = int(response[2].split("</span>")[0])
             return FreeVelodi(self, free_bikes, free_docks)
         except IndexError:
-            raise Exception("Data not found.")  # TODO: Replace by custom exception
+            raise DataNotFound
 
 
 class VelodiAPI:

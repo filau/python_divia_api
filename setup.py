@@ -21,8 +21,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-from setuptools import setup, Extension  # TODO: Import orders must follow PEP8
 from os import path
+
+from setuptools import setup, Extension
 
 this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:

@@ -21,12 +21,14 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-from requests import get  # TODO: Import orders must follow PEP8
 from json import loads
+
+from requests import get
+
 from .velodi import VelodiAPI
 from .line import Line
 from .stop import Stop
-from .exceptions import InvalidWay
+from .exceptions import InvalidWay, LineNotFound
 
 
 VALID_WAYS = ['A', 'R']
@@ -41,11 +43,16 @@ class DiviaAPI:
         self.velodi = VelodiAPI()  # Deprecated, directly import and initialize VelodiAPI instead.
 
     def get_line(self, line_id: str) -> Line:
+        """Find a line by specifying its unique identifier.
+        :param line_id: The unique identifier of the line.
+        :return: The line whose us
+        """
         """Find a line by specifying its unique identifier."""
         corresponding_lines = list(
             item for item in self.network["arborescence"]["lignes"].values() if item["id"] == line_id)
         if len(corresponding_lines) > 0:
             return Line(self, corresponding_lines[0])
+        raise LineNotFound
 
     def find_line(self, name: str, way: str = 'A') -> Line:
         """Find a line by specifying its name and its way."""
