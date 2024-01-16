@@ -130,5 +130,5 @@ class VelodiAPI:
                 free = query_result[0]["infos"]["qucit"]["realtime"]
                 results.append(FreeVelodi(station, free["bikes"], free["docks"]))
             except IndexError:
-                raise Exception("Data not found.")
+                raise Exception("Data not found.")  # TODO: Create custom exception instead of raising broad exception.
         return results
